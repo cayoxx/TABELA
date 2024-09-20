@@ -1,0 +1,66 @@
+CREATE DATABASE empresabanco_1e;
+USE empresabanco_1e;
+
+CREATE TABLE departamento (
+    dcodigo INT AUTO_INCREMENT PRIMARY KEY,
+    dnome VARCHAR(50)
+);
+
+CREATE TABLE funcionario (
+    funcodigo INT AUTO_INCREMENT PRIMARY KEY,
+    dnome VARCHAR(50),
+    nascimento DATE,
+    salario DECIMAL(10,2),
+    dcodigo INT,
+    FOREIGN KEY (dcodigo) REFERENCES departamento(dcodigo)	
+);
+
+CREATE TABLE dependente (
+    depcodigo INT AUTO_INCREMENT PRIMARY KEY,
+    dnome VARCHAR(50),
+    funcodigo INT,
+    FOREIGN KEY (funcodigo) REFERENCES funcionario(funcodigo)	
+);
+
+INSERT INTO departamento (dnome)
+VALUES 
+('Municipal'),
+('Financeiro'),
+('Recursos Humanos'),
+('Tecnologia'),
+('Marketing'),
+('Vendas'),
+('Jurídico'),
+('Logística'),
+('Compras'),
+('Produção');
+
+INSERT INTO funcionario (dnome, nascimento, salario, dcodigo)
+VALUES 
+('Renatinho', '2024-09-20', '2000.00', 1),
+('Juliana', '1990-05-15', '2500.00', 2),
+('Marcos', '1985-11-30', '3000.00', 3),
+('Ana', '1992-03-10', '2200.00', 1),
+('Felipe', '1988-07-25', '2800.00', 2),
+('Laura', '1995-12-05', '2400.00', 3),
+('Ricardo', '1980-01-20', '3500.00', 1),
+('Tatiane', '1993-08-18', '2300.00', 2),
+('André', '1991-06-22', '2600.00', 3),
+('Beatriz', '1987-04-14', '3000.00', 1);
+
+INSERT INTO dependente (dnome, funcodigo)
+VALUES 
+('Jubilena', 1),
+('Carlos', 2),
+('Fernanda', 3),
+('Roberto', 1),
+('Mariana', 2),
+('Eduardo', 3),
+('Sofia', 1),
+('Lucas', 2),
+('Tatiane', 3),
+('Gustavo', 1);
+
+SELECT * FROM departamento;
+SELECT * FROM dependente;
+SELECT * FROM funcionario;
