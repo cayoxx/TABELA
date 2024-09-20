@@ -1,0 +1,25 @@
+CREATE USER 'garro'@'localhost' identified by '002';
+RENAME USER 'garro'@'localhost' TO 'memphis'@'localhost';
+select user, host from MYSQL.user;
+
+CREATE USER 'romero'@'localhost' identified by '003';
+DROP USER 'romero'@'localhost';
+
+CREATE USER 'yurialberto'@'localhost' identified by '001';
+RENAME USER 'yurialberto'@'localhost' TO 'garro'@'localhost';
+select user, host from MYSQL.user;
+
+GRANT ALL privileges ON empresaa_1e TO 'garro'@'localhost';
+
+SHOW GRANTS FOR 'garro'@'localhost';
+
+REVOKE ALL privileges ON empresaa_1e FROM 'garro'@'localhost';
+
+GRANT INSERT ON empresaa_1e.* TO 'garro'@'localhost';
+
+GRANT SELECT ON empresaa_1e.* TO 'garro'@'localhost';
+
+GRANT DELETE ON empresaa_1e.* TO 'garro'@'localhost';
+
+GRANT UPDATE ON empresaa_1e.* TO 'garro'@'localhost';
+
